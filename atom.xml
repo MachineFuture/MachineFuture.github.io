@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mf.cplm.fun</id>
     <title>Millennium Force的个人博客（确信）</title>
-    <updated>2022-05-06T13:25:36.602Z</updated>
+    <updated>2022-05-13T10:58:26.241Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mf.cplm.fun"/>
     <link rel="self" href="https://mf.cplm.fun/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://mf.cplm.fun/images/avatar.png</logo>
     <icon>https://mf.cplm.fun/favicon.ico</icon>
     <rights>All rights reserved 2022, Millennium Force的个人博客（确信）</rights>
+    <entry>
+        <title type="html"><![CDATA[513整活]]></title>
+        <id>https://mf.cplm.fun/post/513-zheng-huo/</id>
+        <link href="https://mf.cplm.fun/post/513-zheng-huo/">
+        </link>
+        <updated>2022-05-13T10:55:34.000Z</updated>
+        <content type="html"><![CDATA[<p>到底什么是<em>好</em>过山车？<br>
+<em>Hyper？Giga？Strata？</em><br>
+<strong>最新研究表明</strong><br>
+Hyper<strong>等于</strong>废物，Hyper中的轨道会因时间的流逝而变得落后，体验指数下降3-4倍<br>
+浇花花死，养鱼鱼亡<br>
+Giga的高度和速度<em>虽不逊色</em>，但也不含充分的骑行时间，加上建造、运行时间长，Giga已无<strong>需求</strong><br>
+现在北京、上海、<s>重庆</s>等一线城市，已经颁布条令<br>
+禁止中小学生乘坐Giga过山车<br>
+Strata虽速度和高度都是顶尖，但几乎<strong>无体验</strong>，长度极短，不易于人体趋势，时间更短<br>
+物理专家们称其为<s>平地飞行</s><br>
+是漂移、趋势的<strong>致病元凶</strong><br>
+<em>坐车要觉醒</em><br>
+<em>身高要革命</em><br>
+<em>坐车坐好车</em><br>
+<em>车好人健康</em></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[泄露] Reddit Premium Lounge 规则全文]]></title>
         <id>https://mf.cplm.fun/post/xie-lu-reddit-premium-lounge-gui-ze-quan-wen/</id>
