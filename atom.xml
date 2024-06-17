@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://mf.cplm.fun</id>
+    <id>https://machinefuture.github.io</id>
     <title>Millennium Force的个人博客（确信）</title>
-    <updated>2024-01-11T08:53:13.554Z</updated>
+    <updated>2024-06-17T13:38:19.359Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://mf.cplm.fun"/>
-    <link rel="self" href="https://mf.cplm.fun/atom.xml"/>
+    <link rel="alternate" href="https://machinefuture.github.io"/>
+    <link rel="self" href="https://machinefuture.github.io/atom.xml"/>
     <subtitle>hhh写一些Millennium Force的日常，纯属虚构（）</subtitle>
-    <logo>https://mf.cplm.fun/images/avatar.png</logo>
-    <icon>https://mf.cplm.fun/favicon.ico</icon>
+    <logo>https://machinefuture.github.io/images/avatar.png</logo>
+    <icon>https://machinefuture.github.io/favicon.ico</icon>
     <rights>All rights reserved 2024, Millennium Force的个人博客（确信）</rights>
     <entry>
         <title type="html"><![CDATA[513整活]]></title>
-        <id>https://mf.cplm.fun/post/513-zheng-huo/</id>
-        <link href="https://mf.cplm.fun/post/513-zheng-huo/">
+        <id>https://machinefuture.github.io/post/513-zheng-huo/</id>
+        <link href="https://machinefuture.github.io/post/513-zheng-huo/">
         </link>
         <updated>2022-05-13T10:55:34.000Z</updated>
         <content type="html"><![CDATA[<p>到底什么是<em>好</em>过山车？<br>
@@ -35,8 +35,8 @@ Strata虽速度和高度都是顶尖，但几乎<strong>无体验</strong>，长
     </entry>
     <entry>
         <title type="html"><![CDATA[[泄露] Reddit Premium Lounge 规则全文]]></title>
-        <id>https://mf.cplm.fun/post/xie-lu-reddit-premium-lounge-gui-ze-quan-wen/</id>
-        <link href="https://mf.cplm.fun/post/xie-lu-reddit-premium-lounge-gui-ze-quan-wen/">
+        <id>https://machinefuture.github.io/post/xie-lu-reddit-premium-lounge-gui-ze-quan-wen/</id>
+        <link href="https://machinefuture.github.io/post/xie-lu-reddit-premium-lounge-gui-ze-quan-wen/">
         </link>
         <updated>2022-05-06T13:23:21.000Z</updated>
         <content type="html"><![CDATA[<p>Full text Lounge Rules<br>
@@ -86,8 +86,8 @@ Always exercise caution with what you decide to put on the internet, however ple
     </entry>
     <entry>
         <title type="html"><![CDATA[Cedar Point过山车更新日志（迫真）]]></title>
-        <id>https://mf.cplm.fun/post/cpchangelog/</id>
-        <link href="https://mf.cplm.fun/post/cpchangelog/">
+        <id>https://machinefuture.github.io/post/cpchangelog/</id>
+        <link href="https://machinefuture.github.io/post/cpchangelog/">
         </link>
         <updated>2022-05-05T11:02:33.000Z</updated>
         <content type="html"><![CDATA[<p><strong>Blue Streak</strong> 版本号V1.0 上次更新时间：1964.05.23<br>
@@ -150,8 +150,8 @@ V2.0（2014）：更改了主题<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[LC，你就是歌姬吧！！]]></title>
-        <id>https://mf.cplm.fun/post/lcsucks/</id>
-        <link href="https://mf.cplm.fun/post/lcsucks/">
+        <id>https://machinefuture.github.io/post/lcsucks/</id>
+        <link href="https://machinefuture.github.io/post/lcsucks/">
         </link>
         <updated>2022-05-05T10:29:01.000Z</updated>
         <content type="html"><![CDATA[<p>恁是不会理解吗？明明是开直播模拟，大家都在唱歌跳舞，你偏偏钻空子说成<strong>开会</strong>，<em>语文老师都没你牛逼吧</em>！而且恁为什么闲着没事干就去招惹win2k？恁<strong>不知道</strong>惹了一个很有人气的人就<em>等于</em>惹了<strong>群里所有人</strong>吗？？？恁是不是九年义务教育没学好？要不要我给恁报个幼儿园学前班？恁都不知道win2k差点自s吗？要不是群员积极干预，win2k估计早就<s>离开</s>这美好的世界了，恁就会搭上一条人命！<br>
@@ -160,8 +160,8 @@ V2.0（2014）：更改了主题<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://mf.cplm.fun/post/hello-gridea/</id>
-        <link href="https://mf.cplm.fun/post/hello-gridea/">
+        <id>https://machinefuture.github.io/post/hello-gridea/</id>
+        <link href="https://machinefuture.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
