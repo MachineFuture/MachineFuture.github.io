@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MachineFuture Mainpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Nintendo-style font -->
+  <style>
+    @font-face {
+      font-family: "NintendoNTLG";
+      src: url("https://machinefuture.github.io/fonts/nintendo_NTLGDB_001.ttf")
+        format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+
+    :root {
+      /* default = cool mode baseline */
+      --fg: #171729;
+      --muted: #6d6d90;
+      --border: #d3d4ea;
+      --surface: #f8f8fc;
+      --accent: #4f4684;
+      --accent-soft: #dedbf4;
+      --accent-strong: #373061;
+
+      --joban-color: #2e3049;
+      --ueno-color: #4f4684;
+      --hobby-color: #5c538f;
+      --museum-color: #444a88;
+      --textstyle-color: #6d5aa0;
+      --slantede-color: #7a5faf;
+      --arcane-color: #56517e;
+    }
+
+    body[data-theme="kanto"] {
+      --fg: #171729;
+      --muted: #6d6d90;
+      --border: #d3d4ea;
+      --surface: #f8f8fc;
+      --accent: #4f4684;
+      --accent-soft: #dedbf4;
+      --accent-strong: #373061;
+
+      --joban-color: #2e3049;
+      --ueno-color: #4f4684;
+      --hobby-color: #5c538f;
+      --museum-color: #444a88;
+      --textstyle-color: #6d5aa0;
+      --slantede-color: #7a5faf;
+      --arcane-color: #56517e;
+
+      background: linear-gradient(135deg, #f4f4ff, #d7d9f3);
+    }
+
+    body[data-theme="museum"] {
+      --fg: #241b1b;
+      --muted: #7a625b;
+      --border: #d4b8b2;
+      --surface: #fdf8f6;
+      --accent: #c2453a;
+      --accent-soft: #f4d0c8;
+      --accent-strong: #8f2f27;
+
+      --joban-color: #4b3a37;
+      --ueno-color: #c2453a;
+      --hobby-color: #c26c3a;
+      --museum-color: #b6414f;
+      --textstyle-color: #a43f64;
+      --slantede-color: #8c3e7e;
+      --arcane-color: #91423f;
+
+      background: linear-gradient(135deg, #fff4ef, #f4dfdd);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "NintendoNTLG", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--fg);
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-slot {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      /* put your logo here */
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      background: #ffffff;
+    }
+
+    .toggle-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toggle-row {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .toggle-row button {
+      border: none;
+      background: transparent;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 0.15s ease-out, color 0.15s ease-out;
+      white-space: nowrap;
+    }
+
+    .toggle-row button.active {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 18px auto 40px;
+      padding: 0 20px 30px;
+    }
+
+    .shell {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+      padding: 22px 24px 26px;
+      animation: fadeInShell 0.4s ease-out both;
+    }
+
+    .hero {
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.0rem, 3vw + 1rem, 2.4rem);
+      margin: 0 0 8px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button-primary {
+      border: 1px solid var(--accent-strong);
+      background: var(--accent);
+      color: #ffffff;
+      padding: 7px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 0.18s ease-out, transform 0.18s ease-out,
+        box-shadow 0.18s ease-out;
+    }
+
+    .button-primary:hover {
+      background: var(--accent-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .button-ghost {
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--fg);
+      padding: 7px 14px;
+      font-size: 0.84rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    .button-ghost:hover {
+      background: var(--surface);
+      transform: translateY(-1px);
+    }
+
+    /* Jōban section */
+    .joban-section {
+      margin: 18px 0 22px;
+      text-align: center;
+    }
+
+    .joban-title {
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .joban-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .joban-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      padding: 10px 16px;
+    }
+
+    .joban-groups {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .joban-group {
+      min-width: 56px;
+      text-align: center;
+    }
+
+    .joban-digits {
+      font-family: "NintendoNTLG", monospace;
+      font-size: 1.7rem;
+    }
+
+    .joban-unit {
+      margin-top: 2px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .joban-sep {
+      font-family: "NintendoNTLG", monospace;
+      font-size: 1.5rem;
+      padding: 0 2px;
+    }
+
+    .joban-info {
+      border: 1px solid var(--border);
+      background: #ffffff;
+      font-size: 0.8rem;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      position: relative;
+    }
+
+    .joban-info::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000000;
+      color: #ffffff;
+      padding: 3px 6px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease-out;
+    }
+
+    .joban-info:hover::after {
+      opacity: 1;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .tools-table {
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .tool-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2.4fr) auto;
+      column-gap: 16px;
+      align-items: center;
+      padding: 10px 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-top: none;
+      animation: fadeRow 0.35s ease-out both;
+    }
+
+    .tool-row:nth-child(1) { animation-delay: 0.05s; }
+    .tool-row:nth-child(2) { animation-delay: 0.10s; }
+    .tool-row:nth-child(3) { animation-delay: 0.15s; }
+    .tool-row:nth-child(4) { animation-delay: 0.20s; }
+    .tool-row:nth-child(5) { animation-delay: 0.25s; }
+    .tool-row:nth-child(6) { animation-delay: 0.30s; }
+    .tool-row:nth-child(7) { animation-delay: 0.35s; }
+
+    .tool-row::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .tool-row--joban::before {
+      background: var(--joban-color);
+    }
+    .tool-row--uenotokyocase::before {
+      background: var(--ueno-color);
+    }
+    .tool-row--hobbyroyale::before {
+      background: var(--hobby-color);
+    }
+    .tool-row--nintendomuseum::before {
+      background: var(--museum-color);
+    }
+    .tool-row--textstyle::before {
+      background: var(--textstyle-color);
+    }
+    .tool-row--slantede::before {
+      background: var(--slantede-color);
+    }
+    .tool-row--arcanelevelcalc::before {
+      background: var(--arcane-color);
+    }
+
+    .tool-row:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.09);
+    }
+
+    .tool-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tool-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .tool-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tool-desc {
+      line-height: 1.5;
+      color: var(--fg);
+    }
+
+    .tool-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .tool-link {
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: background 0.15s ease-out, border-color 0.15s ease-out,
+        transform 0.15s ease-out;
+    }
+
+    .tool-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-strong);
+      transform: translateY(-1px);
+    }
+
+    .tool-link-icon {
+      font-size: 0.8rem;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 26px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .footer-right a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
+    @keyframes fadeInShell {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeRow {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 840px) {
+      .header-inner {
+        flex-wrap: wrap;
+      }
+      .toggle-group {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .tool-row {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 6px;
+        align-items: flex-start;
+      }
+      .tool-actions {
+        justify-content: flex-start;
+      }
+      .joban-digits {
+        font-size: 1.4rem;
+      }
+      .joban-group {
+        min-width: 48px;
+      }
+    }
+  </style>
+</head>
+<body data-theme="kanto" data-lang="en">
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="logo-slot"></div>
+        <div class="brand">MachineFuture // MAINPAGE</div>
+      </div>
+
+      <div class="toggle-group">
+        <div class="toggle-row" aria-label="Language toggle">
+          <button type="button" class="active" data-lang-btn data-lang-code="en">
+            EN
+          </button>
+          <button type="button" data-lang-btn data-lang-code="zh">
+            中文
+          </button>
+          <button type="button" data-lang-btn data-lang-code="ja">
+            日本語
+          </button>
+        </div>
+        <div class="toggle-row" aria-label="Theme toggle">
+          <button
+            type="button"
+            class="active"
+            data-theme-option="kanto"
+            data-i18n-key="themeKanto"
+          >
+            Kanto mode
+          </button>
+          <button
+            type="button"
+            data-theme-option="museum"
+            data-i18n-key="themeMuseum"
+          >
+            Museum mode
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <section class="hero">
+        <h1 data-i18n-key="heroTitle">MachineFuture Mainline</h1>
+        <p class="hero-tagline" data-i18n-key="heroTagline">
+          Trains, games, and slightly cursed web tools sharing the same timetable.
+        </p>
+        <p class="hero-desc" data-i18n-key="heroDesc">
+          I'm GameCube, also known as MachineFuture on GitHub. This is the hub for
+          all my weird little experiments: from Ueno–Tokyo Line case openings to
+          text distorters and Discord calculators.
+        </p>
+        <p class="hero-meta" data-i18n-key="heroByline">
+          Made by MachineFuture (GameCube) on GitHub.
+        </p>
+        <div class="hero-actions">
+          <button
+            id="hero-cta"
+            class="button-primary"
+            type="button"
+            data-i18n-key="heroButton"
+          >
+            Jump to tools
+          </button>
+          <a
+            class="button-ghost"
+            href="https://github.com/MachineFuture"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span data-i18n-key="footerGithub">View my GitHub</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Jōban timer -->
+      <section class="joban-section">
+        <div class="joban-title">JŌBAN LINE</div>
+        <div class="joban-label" data-i18n-key="counterLabel">
+          Days since last Jōban Line accident
+        </div>
+        <div class="joban-display">
+          <div class="joban-groups">
+            <div class="joban-group">
+              <div class="joban-digits" id="joban-days">00</div>
+              <div class="joban-unit" data-i18n-key="jobanD">D</div>
+            </div>
+            <div class="joban-sep">:</div>
+            <div class="joban-group">
+              <div class="joban-digits" id="joban-hours">00</div>
+              <div class="joban-unit" data-i18n-key="jobanH">H</div>
+            </div>
+            <div class="joban-sep">:</div>
+            <div class="joban-group">
+              <div class="joban-digits" id="joban-minutes">00</div>
+              <div class="joban-unit" data-i18n-key="jobanM">M</div>
+            </div>
+            <div class="joban-sep">:</div>
+            <div class="joban-group">
+              <div class="joban-digits" id="joban-seconds">00</div>
+              <div class="joban-unit" data-i18n-key="jobanS">S</div>
+            </div>
+          </div>
+          <button
+            class="joban-info"
+            type="button"
+            data-tooltip="2025-11-14 07:39 JST"
+          >
+            i
+          </button>
+        </div>
+      </section>
+
+      <section class="tools-section" id="tools-section">
+        <div class="section-header">
+          <h2 data-i18n-key="toolsTitle">Tools & Experiments</h2>
+          <p class="section-subtitle" data-i18n-key="toolsSubtitle">
+            Everything lives on GitHub, but runs right in your browser.
+          </p>
+        </div>
+
+        <div class="tools-table">
+          <!-- Joban ridership leaderboard -->
+          <div class="tool-row tool-row--joban">
+            <div class="tool-main">
+              <div class="tool-name" data-i18n-key="tool-joban-name">
+                Joban
+              </div>
+              <div class="tool-meta">Web · line data</div>
+            </div>
+            <div class="tool-desc" data-i18n-key="tool-joban-desc">
+              Ridership leaderboard for Jōban Line stations.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/joban/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- UenoTokyoCase -->
+          <div class="tool-row tool-row--uenotokyocase">
+            <div class="tool-main">
+              <div
+                class="tool-name"
+                data-i18n-key="tool-uenotokyocase-name"
+              >
+                UenoTokyoCase
+              </div>
+              <div class="tool-meta">Web app · trains</div>
+            </div>
+            <div
+              class="tool-desc"
+              data-i18n-key="tool-uenotokyocase-desc"
+            >
+              CS2-style case opening simulator where every drop is a Ueno–Tokyo
+              Line station. Perfect for railfan lootbox addiction.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/uenotokyocase/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- HobbyRoyale -->
+          <div class="tool-row tool-row--hobbyroyale">
+            <div class="tool-main">
+              <div class="tool-name" data-i18n-key="tool-hobbyroyale-name">
+                HobbyRoyale
+              </div>
+              <div class="tool-meta">Prototype · game</div>
+            </div>
+            <div
+              class="tool-desc"
+              data-i18n-key="tool-hobbyroyale-desc"
+            >
+              Prototype arena where random hobbies fight for screen time. Early
+              concept, more vibe than balance.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/hobbyroyale/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- NintendoMuseum -->
+          <div class="tool-row tool-row--nintendomuseum">
+            <div class="tool-main">
+              <div
+                class="tool-name"
+                data-i18n-key="tool-nintendomuseum-name"
+              >
+                NintendoMuseum Guide DL
+              </div>
+              <div class="tool-meta">Utility · download</div>
+            </div>
+            <div
+              class="tool-desc"
+              data-i18n-key="tool-nintendomuseum-desc"
+            >
+              Simple landing page to grab the Nintendo Museum guide file fast,
+              no nonsense.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/nintendomuseum/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- TextStyle -->
+          <div class="tool-row tool-row--textstyle">
+            <div class="tool-main">
+              <div class="tool-name" data-i18n-key="tool-textstyle-name">
+                TextStyle
+              </div>
+              <div class="tool-meta">Text · styling</div>
+            </div>
+            <div
+              class="tool-desc"
+              data-i18n-key="tool-textstyle-desc"
+            >
+              Text stylizer that turns normal sentences into aesthetic, cursed,
+              or spammy styles.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/textstyle/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- SlantedE -->
+          <div class="tool-row tool-row--slantede">
+            <div class="tool-main">
+              <div class="tool-name" data-i18n-key="tool-slantede-name">
+                SlantedE
+              </div>
+              <div class="tool-meta">Text · meme</div>
+            </div>
+            <div
+              class="tool-desc"
+              data-i18n-key="tool-slantede-desc"
+            >
+              A microscopic, dumb, beautiful idea: a tool dedicated to giving
+              every “e” in your text a dramatic slant.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/slantede/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Arcane level calc -->
+          <div class="tool-row tool-row--arcanelevelcalc">
+            <div class="tool-main">
+              <div
+                class="tool-name"
+                data-i18n-key="tool-arcanelevelcalc-name"
+              >
+                Arcane Level Calc
+              </div>
+              <div class="tool-meta">Discord · utility</div>
+            </div>
+            <div
+              class="tool-desc"
+              data-i18n-key="tool-arcanelevelcalc-desc"
+            >
+              Calculator for the Arcane Discord bot so you stop guessing how
+              many messages you still need.
+            </div>
+            <div class="tool-actions">
+              <a
+                class="tool-link"
+                href="https://machinefuture.github.io/arcanelevelcalc/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n-key="toolButton">Open tool</span>
+                <span class="tool-link-icon">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      © <span id="year"></span> MachineFuture
+    </div>
+    <div class="footer-right">
+      <a
+        href="https://github.com/MachineFuture"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span data-i18n-key="footerGithub">View my GitHub</span>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        siteTitle: "MachineFuture Mainpage",
+        heroTitle: "MachineFuture Mainline",
+        heroTagline:
+          "Trains, games, and slightly cursed web tools sharing the same timetable.",
+        heroDesc:
+          "I'm GameCube, also known as MachineFuture on GitHub. This is the hub for all my weird little experiments: from Ueno–Tokyo Line case openings to text distorters and Discord calculators.",
+        heroByline: "Made by MachineFuture (GameCube) on GitHub.",
+        heroButton: "Jump to tools",
+        counterLabel: "Days since last Jōban Line accident",
+        jobanD: "D",
+        jobanH: "H",
+        jobanM: "M",
+        jobanS: "S",
+        toolsTitle: "Tools & Experiments",
+        toolsSubtitle:
+          "Everything lives on GitHub, but runs right in your browser.",
+        "tool-joban-name": "Joban",
+        "tool-joban-desc":
+          "Ridership leaderboard for Jōban Line stations.",
+        "tool-uenotokyocase-name": "UenoTokyoCase",
+        "tool-uenotokyocase-desc":
+          "CS2-style case opening simulator where every drop is a Ueno–Tokyo Line station. Perfect for railfan lootbox addiction.",
+        "tool-hobbyroyale-name": "HobbyRoyale",
+        "tool-hobbyroyale-desc":
+          "Prototype arena where random hobbies fight for screen time. Early concept, more vibe than balance.",
+        "tool-nintendomuseum-name": "NintendoMuseum Guide DL",
+        "tool-nintendomuseum-desc":
+          "Simple landing page to grab the Nintendo Museum guide file fast, no nonsense.",
+        "tool-textstyle-name": "TextStyle",
+        "tool-textstyle-desc":
+          "Text stylizer that turns normal sentences into aesthetic, cursed, or spammy styles.",
+        "tool-slantede-name": "SlantedE",
+        "tool-slantede-desc":
+          "A microscopic, dumb, beautiful idea: a tool dedicated to giving every “e” in your text a dramatic slant.",
+        "tool-arcanelevelcalc-name": "Arcane Level Calc",
+        "tool-arcanelevelcalc-desc":
+          "Calculator for the Arcane Discord bot so you stop guessing how many messages you still need.",
+        toolButton: "Open tool",
+        footerGithub: "View my GitHub",
+        themeKanto: "Kanto mode",
+        themeMuseum: "Museum mode"
+      },
+      zh: {
+        siteTitle: "MachineFuture 主页",
+        heroTitle: "MachineFuture 主站",
+        heroTagline:
+          "电车、游戏，还有一堆离谱小网站，在同一条时间轴上狂奔。",
+        heroDesc:
+          "我是 GameCube，在 GitHub 上的名字是 MachineFuture。这里是我所有怪怪小实验的集合：上野东京线开箱、文字变形器、Discord 等级计算器，全堆在这。",
+        heroByline: "由 MachineFuture（GameCube）在 GitHub 上折腾出来的东西。",
+        heroButton: "跳到工具区",
+        counterLabel: "距离上一次常磐线事故经过的时间",
+        jobanD: "日",
+        jobanH: "时",
+        jobanM: "分",
+        jobanS: "秒",
+        toolsTitle: "线上工具 & 小实验",
+        toolsSubtitle: "全都托管在 GitHub，但大多直接在浏览器里就能玩。",
+        "tool-joban-name": "Joban",
+        "tool-joban-desc":
+          "常磐线车站客流排行榜。",
+        "tool-uenotokyocase-name": "UenoTokyoCase 开箱模拟器",
+        "tool-uenotokyocase-desc":
+          "CS2 风格的开箱网页，把掉落从枪皮换成上野东京线车站，给铁宅准备的开箱乐园。",
+        "tool-hobbyroyale-name": "HobbyRoyale 原型场",
+        "tool-hobbyroyale-desc":
+          "让各种兴趣爱好互相“乱斗”的原型游戏，目前偏概念向，但气氛已经拉满。",
+        "tool-nintendomuseum-name": "NintendoMuseum 导览下载页",
+        "tool-nintendomuseum-desc":
+          "专门用来下载任天堂博物馆导览文件的简单页面，点进来拿了就走。",
+        "tool-textstyle-name": "TextStyle 文字样式器",
+        "tool-textstyle-desc":
+          "把普通文字变成花里胡哨、怪力乱神或者洗脑复读风格的小工具。",
+        "tool-slantede-name": "SlantedE 斜体 e 生成器",
+        "tool-slantede-desc":
+          "专注于把所有字母 e 变斜的抽象网站，小到离谱但又很好笑。",
+        "tool-arcanelevelcalc-name": "Arcane 等级计算器",
+        "tool-arcanelevelcalc-desc":
+          "帮你计算在 Arcane 机器人里还差多少经验升级，不再靠瞎猜刷屏。",
+        toolButton: "打开工具",
+        footerGithub: "前往 GitHub",
+        themeKanto: "关东模式",
+        themeMuseum: "博物馆模式"
+      },
+      ja: {
+        siteTitle: "MachineFuture メインページ",
+        heroTitle: "MachineFuture 本線",
+        heroTagline:
+          "電車・ゲーム・ちょっとカオスな Web ツールが同じダイヤで走ってます。",
+        heroDesc:
+          "GameCube です。GitHub では MachineFuture として活動中。ここは俺の実験場：上野東京ライン開封ガチャから文字いじり、Discord レベル計算まで全部ここ。",
+        heroByline: "GitHub の MachineFuture（GameCube）が作った小さな実験場。",
+        heroButton: "ツール一覧へ",
+        counterLabel: "常磐線の直近事故からの経過時間",
+        jobanD: "日",
+        jobanH: "時",
+        jobanM: "分",
+        jobanS: "秒",
+        toolsTitle: "ツール & 実験場",
+        toolsSubtitle: "全部 GitHub 発、ブラウザ完結型の小さな遊び場。",
+        "tool-joban-name": "Joban",
+        "tool-joban-desc":
+          "常磐線各駅の利用者数ランキング。",
+        "tool-uenotokyocase-name": "UenoTokyoCase",
+        "tool-uenotokyocase-desc":
+          "CS2 風のケース開封シミュレーター。スキンの代わりに上野東京ラインの駅がドロップする鉄オタ向けガチャ。",
+        "tool-hobbyroyale-name": "HobbyRoyale",
+        "tool-hobbyroyale-desc":
+          "いろんな趣味がバトロワする試作ゲーム。まだプロトだけど、雰囲気はもう完成してる。",
+        "tool-nintendomuseum-name": "NintendoMuseum ガイド DL",
+        "tool-nintendomuseum-desc":
+          "任天堂ミュージアムのガイドデータをサクっとダウンロードするためのシンプルなページ。",
+        "tool-textstyle-name": "TextStyle",
+        "tool-textstyle-desc":
+          "普通の文章を、装飾盛り盛り・電波風・スパム感スタイルに変えるテキストツール。",
+        "tool-slantede-name": "SlantedE",
+        "tool-slantede-desc":
+          "テキスト中の e だけをやたら斜めにして遊ぶ、アイデア一本勝負のミニサイト。",
+        "tool-arcanelevelcalc-name": "Arcane レベル計算機",
+        "tool-arcanelevelcalc-desc":
+          "Discord の Arcane Bot 用レベル計算ツール。あと何メッセージ必要か一発で計算。",
+        toolButton: "ツールを開く",
+        footerGithub: "GitHub を見る",
+        themeKanto: "関東モード",
+        themeMuseum: "ミュージアムモード"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.en;
+      document.body.dataset.lang = lang;
+      document.title = t.siteTitle;
+
+      document.querySelectorAll("[data-i18n-key]").forEach((el) => {
+        const key = el.dataset.i18nKey;
+        if (key && t[key]) {
+          el.textContent = t[key];
+        }
+      });
+
+      document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.langCode === lang);
+      });
+    }
+
+    document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.dataset.langCode);
+      });
+    });
+
+    function setTheme(theme) {
+      document.body.dataset.theme = theme;
+      document.querySelectorAll("[data-theme-option]").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.themeOption === theme);
+      });
+    }
+
+    document.querySelectorAll("[data-theme-option]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setTheme(btn.dataset.themeOption);
+      });
+    });
+
+    // Jōban Line accident timer
+    // Accident time: 2025-11-14 07:39 JST = 2025-11-13T22:39:00Z
+    const accidentTimestamp = Date.UTC(2025, 10, 13, 22, 39, 0);
+    const daysEl = document.getElementById("joban-days");
+    const hoursEl = document.getElementById("joban-hours");
+    const minutesEl = document.getElementById("joban-minutes");
+    const secondsEl = document.getElementById("joban-seconds");
+
+    function pad(num) {
+      return String(num).padStart(2, "0");
+    }
+
+    function updateJobanCounter() {
+      const nowUtcMs = Date.now();
+      let diffMs = nowUtcMs - accidentTimestamp;
+      if (diffMs < 0) diffMs = 0;
+
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      daysEl.textContent = pad(days);
+      hoursEl.textContent = pad(hours);
+      minutesEl.textContent = pad(minutes);
+      secondsEl.textContent = pad(seconds);
+    }
+
+    document.getElementById("hero-cta").addEventListener("click", () => {
+      const section = document.getElementById("tools-section");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    setLanguage("en");
+    setTheme("kanto");
+    updateJobanCounter();
+    setInterval(updateJobanCounter, 1000);
+  </script>
+</body>
+</html>
